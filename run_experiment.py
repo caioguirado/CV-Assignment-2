@@ -1,10 +1,13 @@
 import time
 import torch
+import pickle
 import argparse
 import pandas as pd
 from tqdm import tqdm
 import torch.nn as nn
 import torch.optim as optim
+import matplotlib.pyplot as plt
+from sklearn.metrics import classification_report
 
 if __name__ == "__main__":
     
@@ -80,7 +83,7 @@ if __name__ == "__main__":
         running_loss = 0.0
         train_epoch_loss = 0
         MODEL.train()
-        for idx, (local_batch, local_labels) in tqdm(enumerate(training_generator)):
+        for idx, (local_batch, local_labels) in enumerate(tqdm(training_generator)):
 
             local_batch, local_labels = local_batch.to(device), local_labels.to(device)
             # local_labels = local_labels.unsqueeze(1).float()
@@ -127,8 +130,27 @@ if __name__ == "__main__":
         if epoch % 10 == 0:
             torch.save(MODEL.state_dict(), f'./experiments/{exp_folder}/model_epoch_{epoch}.pth')
 
+# Create report and save
 plt.figure()
 plt.plot(loss_stats['train'])
 plt.plot(loss_stats['val'])
 plt.title('Train and Validation Loss')
-plt.savefig('./experiments/{exp_folder}/train_val_loss.png')
+plt.savefig(f'./experiments/{exp_folder}/train_val_loss.png')
+
+# Saving predictions
+with open(f'./experiments/{exp_folder}/val_preds.pkl', 'wb') as f:
+    pickle.dump(val_preds, f)
+
+with open(f'./experiments/{exp_folder}/val_labels.pkl', 'wb') as f:
+    pickle.dump(val_labels, f)
+
+# Save classification report
+cr = classification_report(val_labels, val_preds, output_dict=True)
+df_cr = pd.DataFrame(cr).transpose()
+df_cr.to_csv(f'./experiments/{exp_folder}/classification_report.csv')
+
+with open(f'./experiments/{exp_folder}/classification_report.tex', 'w') as f:
+    f.write(df.to_latex())
+
+with open(f'./experiments/{exp_folder}/classification_report.txt', 'w') as f:
+    f.write(df.to_latex())

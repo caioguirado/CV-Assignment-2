@@ -12,4 +12,4 @@ NUM_WORKERS = 6
 CRITERION = nn.CrossEntropyLoss()
 MODEL = model
 OPTIMIZER = ''
-MAX_EPOCHS = 40
+MAX_EPOCHS = 10
