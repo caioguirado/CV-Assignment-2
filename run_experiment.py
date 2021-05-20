@@ -134,7 +134,7 @@ if __name__ == "__main__":
 # Create report and save
 plt.figure()
 plt.plot(loss_stats['train'], label='Train')
-plt.plot(loss_stats['val'], label='Train')
+plt.plot(loss_stats['val'], label='Val')
 plt.title('Train and Validation Loss')
 plt.legend()
 plt.savefig(f'./experiments/{exp_folder}/train_val_loss.png')
