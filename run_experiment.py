@@ -113,7 +113,8 @@ if __name__ == "__main__":
                 val_loss = CRITERION(outputs, local_labels)
                 val_epoch_loss += val_loss.item()
                 
-                val_preds += torch.flatten(outputs).tolist()
+                val_preds += torch.argmax(nn.functional.softmax(outputs), axis=1).tolist()
+                # val_preds += torch.flatten(outputs).tolist()
                 val_labels += torch.flatten(local_labels).tolist()
 
         loss_stats['train'].append(train_epoch_loss/len(training_generator))
@@ -132,9 +133,10 @@ if __name__ == "__main__":
 
 # Create report and save
 plt.figure()
-plt.plot(loss_stats['train'])
-plt.plot(loss_stats['val'])
+plt.plot(loss_stats['train'], label='Train')
+plt.plot(loss_stats['val'], label='Train')
 plt.title('Train and Validation Loss')
+plt.legend()
 plt.savefig(f'./experiments/{exp_folder}/train_val_loss.png')
 
 # Saving predictions
@@ -150,7 +152,7 @@ df_cr = pd.DataFrame(cr).transpose()
 df_cr.to_csv(f'./experiments/{exp_folder}/classification_report.csv')
 
 with open(f'./experiments/{exp_folder}/classification_report.tex', 'w') as f:
-    f.write(df.to_latex())
+    f.write(df_cr.to_latex())
 
 with open(f'./experiments/{exp_folder}/classification_report.txt', 'w') as f:
-    f.write(df.to_latex())
+    f.write(df_cr.to_latex())

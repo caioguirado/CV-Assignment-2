@@ -8,14 +8,14 @@ aug_pipeline = iaa.Sequential([
         iaa.Sometimes(0.5,
             iaa.SomeOf((0, 5),
                         [
-                            iaa.OneOf([
-                                    iaa.GaussianBlur((0, 1.0)),
-                                    # blur images with a sigma between 0 and 3.0
-                                    iaa.AverageBlur(k=(3, 5)),
-                                    # blur image using local means with kernel sizes between 2 and 7
-                                    iaa.MedianBlur(k=(3, 5)),
-                                    # blur image using local medians with kernel sizes between 2 and 7
-                            ]),
+                            # iaa.OneOf([
+                            #         iaa.GaussianBlur((0, 1.0)),
+                            #         # blur images with a sigma between 0 and 3.0
+                            #         iaa.AverageBlur(k=(3, 5)),
+                            #         # blur image using local means with kernel sizes between 2 and 7
+                            #         iaa.MedianBlur(k=(3, 5)),
+                            #         # blur image using local medians with kernel sizes between 2 and 7
+                            # ]),
 
                             # iaa.Sharpen(alpha=(0, 1.0), lightness=(0.9, 1.1)),
                             # iaa.Emboss(alpha=(0, 1.0), strength=(0, 2.0)),
