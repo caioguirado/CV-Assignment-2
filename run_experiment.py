@@ -77,7 +77,7 @@ if __name__ == "__main__":
     }
 
     print('============ Init Train ============')
-    for epoch in range(MAX_EPOCHS):
+    for epoch in range(1, MAX_EPOCHS + 1):
         i = 0
         start_time = time.time()
         running_loss = 0.0
