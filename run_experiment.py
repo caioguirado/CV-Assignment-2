@@ -50,7 +50,7 @@ if __name__ == "__main__":
 
     # Load CUDA 
     use_cuda = torch.cuda.is_available()
-    device = torch.device("cuda:0" if use_cuda else "cpu")
+    device = torch.device('cuda:0' if use_cuda else 'cpu')
     torch.backends.cudnn.benchmark = True
     
     # Create Dataloaders
@@ -65,7 +65,10 @@ if __name__ == "__main__":
     validation_generator = torch.utils.data.DataLoader(validation_set, **params_val)
 
     print('============ Model to CUDA ============')
-    MODEL.cuda()
+    if device == 'cuda:0':
+        MODEL.cuda()
+    
+    
     optimizer = optim.Adam(MODEL.parameters(), lr=0.0001)
 
     # Train
