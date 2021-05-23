@@ -65,8 +65,7 @@ if __name__ == "__main__":
     validation_generator = torch.utils.data.DataLoader(validation_set, **params_val)
 
     print('============ Model to CUDA ============')
-    if device == 'cuda:0':
-        MODEL.cuda()
+    MODEL.cuda()
     
     
     optimizer = optim.Adam(MODEL.parameters(), lr=0.0001)
