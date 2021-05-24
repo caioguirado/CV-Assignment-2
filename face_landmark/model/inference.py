@@ -1,10 +1,13 @@
-from model import *
+from XceptionNet import *
+import dlib
+from imutils import resize, face_utils
+import cv2
 
-xModel = XceptionNetModule()
-xModel.cuda()
-xModel.load_state_dict(torch.load('/content/gdrive/MyDrive/cv/Facial-Landmarks-Detection-Pytorch/model.pt'))
+# xModel = XceptionNetModule()
+# xModel.cuda()
+# xModel.load_state_dict(torch.load('/Users/dhruvrathi/narnia/masters/period5/CV/ass2/CV-Assignment-2/face_landmark/face_landmark_model.pt'))
 face_detector = dlib.get_frontal_face_detector()
-landmark_detector = dlib.shape_predictor("/content/gdrive/MyDrive/cv/Facial-Landmarks-Detection-Pytorch/shape_predictor_68_face_landmarks.dat")
+landmark_detector = dlib.shape_predictor("/Users/dhruvrathi/narnia/masters/period5/CV/ass2/CV-Assignment-2/face_landmark/shape_predictor_68_face_landmarks.dat")
 
 def inference(path):
   img = dlib.load_rgb_image(path)
@@ -22,9 +25,9 @@ def inference(path):
 
   plt.imshow(img)
   plt.show()
-  # return marks
+  return marks
 
-path = "/content/gdrive/MyDrive/cv/Facial-Landmarks-Detection-Pytorch/monica_bellucci.png"
+path = "/Users/dhruvrathi/narnia/masters/period5/CV/ass2/CV-Assignment-2/face_landmark/monica_bellucci.png"
 
 inference(path)
 
