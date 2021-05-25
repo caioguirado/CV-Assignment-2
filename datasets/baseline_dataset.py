@@ -4,7 +4,6 @@ import numpy as np
 class Dataset(torch.utils.data.Dataset):
   
   def __init__(self, data, transform=None):
-
         self.data = data
         self.transform = transform
 
@@ -15,6 +14,15 @@ class Dataset(torch.utils.data.Dataset):
 
         pixels_values_flat = self.data['pixels'].iloc[index]
         X = np.array(pixels_values_flat.split()).reshape(48, 48, 1).astype('float32')
+        
+        # Running experiment with cropped face data
+        pixels_face_values_flat = self.data['pixels_face']
+        X = np.array(pixels_face_values_flat).reshape(48, 48, 3).astype('int32')
+
+        # Running experiment with mouth data
+        pixels_face_values_flat = self.data['pixels_face']
+        X = np.array(pixels_face_values_flat).reshape(48, 48, 3).astype('int32')
+
         y = self.data['emotion'].iloc[index].item()
       #   y = torch.eye(7, dtype=torch.int8)[y]
 
