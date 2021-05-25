@@ -1,0 +1,11 @@
+{
+    "label": "build-nameofapp",
+    "command": "dotnet",
+    "type": "process",
+    "args": [
+      "build",
+      "${workspaceFolder}/src/Services/Service.API.csproj",
+      "/property:GenerateFullPaths=true"
+    ],
+    "problemMatcher": "$msCompile"
+}
