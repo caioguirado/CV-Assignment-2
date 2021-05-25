@@ -7,6 +7,10 @@ from torch.utils.data import Dataset, random_split, DataLoader
 from torchvision import transforms
 from torchsummary import summary
 
+'''
+Class for Landmarks Aug
+'''
+
 class AugLandmarks:
   def __init__(self, dim, angle):
     self.dim = dim

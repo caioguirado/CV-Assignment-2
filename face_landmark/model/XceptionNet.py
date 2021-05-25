@@ -6,6 +6,9 @@ import torchvision.transforms.functional as torchFunc
 from torch.utils.data import Dataset, random_split, DataLoader
 from torchvision import transforms
 from torchsummary import summary
+'''
+XceptionNet model construction.
+'''
 
 class DepthwiseSepConv2D(nn.Module):
   def __init__(self, input_channels, output_channels, k_size, **kwargs):

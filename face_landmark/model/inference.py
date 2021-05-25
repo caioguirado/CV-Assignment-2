@@ -3,6 +3,11 @@ import dlib
 from imutils import resize, face_utils
 import cv2
 
+'''
+Perform inference on the trained Xception net model to find facial landmarks
+'''
+
+
 # xModel = XceptionNetModule()
 # xModel.cuda()
 # xModel.load_state_dict(torch.load('/Users/dhruvrathi/narnia/masters/period5/CV/ass2/CV-Assignment-2/face_landmark/face_landmark_model.pt'))
@@ -37,6 +42,7 @@ import dlib
 from imutils import resize, face_utils
 import cv2
 
+# preprocessing before inference
 def prep_img(img):
   img = torchFunc.to_pil_image(img)
   img = torchFunc.resize(img, (128, 128))

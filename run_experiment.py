@@ -9,6 +9,10 @@ import torch.optim as optim
 import matplotlib.pyplot as plt
 from sklearn.metrics import classification_report
 
+'''
+This class is the entry point to run experiments.
+'''
+
 if __name__ == "__main__":
     
     my_parser = argparse.ArgumentParser()
@@ -78,6 +82,7 @@ if __name__ == "__main__":
         'val': []
     }
 
+# start training
     print('============ Init Train ============')
     for epoch in range(1, MAX_EPOCHS + 1):
         i = 0
