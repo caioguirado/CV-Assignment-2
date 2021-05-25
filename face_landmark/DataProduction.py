@@ -6,6 +6,10 @@ import time
 import cv2
 from matplotlib import pyplot as plt
 
+'''
+Script to generate both kinds of data
+'''
+
 def handleFaceCrop(img):
   rects = inferenceGetFaceCrop(img)
   # print(type(rects))

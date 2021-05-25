@@ -8,6 +8,9 @@ from torchvision import transforms
 from torchsummary import summary
 from face_aug import *
 from landmarks_aug import *
+'''
+Class for Data Augmentation - Combining face aug and landmarks aug
+'''
 
 class DataAugPreprocessor:
   def __init__(self, dim, bright, contrast, saturation, hue, angle, face_offset, crop_offset):

@@ -7,6 +7,10 @@ from torch.utils.data import Dataset, random_split, DataLoader
 from torchvision import transforms
 from torchsummary import summary
 
+'''
+Class for Face Aug
+'''
+
 class AugFace:
   def __init__(self, dim, bright, contrast, saturation, hue, face_offset, crop_offset):
     self.face_offset = face_offset

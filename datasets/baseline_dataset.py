@@ -1,8 +1,11 @@
 import torch
 import numpy as np
 
+'''
+Data Loader class
+'''
 class Dataset(torch.utils.data.Dataset):
-  
+
   def __init__(self, data, transform=None):
         self.data = data
         self.transform = transform
@@ -12,6 +15,7 @@ class Dataset(torch.utils.data.Dataset):
 
   def __getitem__(self, index):
 
+        # Running experiment with simple vanilla data
         pixels_values_flat = self.data['pixels'].iloc[index]
         X = np.array(pixels_values_flat.split()).reshape(48, 48, 1).astype('float32')
         
